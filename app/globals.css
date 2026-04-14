@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+@theme {
+  /* Wii color palette */
+  --color-wii-sky:        #D4E8F7;
+  --color-wii-sky-deep:   #B8D4EE;
+  --color-wii-green:      #4CAF88;
+  --color-wii-green-dark: #3D9B78;
+  --color-wii-blue:       #5B9BD5;
+  --color-wii-blue-dark:  #4A86C0;
+  --color-wii-red:        #E05555;
+  --color-wii-gold:       #F0A500;
+  --color-wii-text:       #1A1A2E;
+  --color-wii-muted:      #6B7280;
+  --color-wii-border:     rgba(255,255,255,0.9);
+
+  /* Font families */
+  --font-nunito:  'Nunito',  system-ui, sans-serif;
+  --font-fredoka: 'Fredoka', system-ui, sans-serif;
+  --font-inter:   'Inter',   system-ui, sans-serif;
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────────────── */
+
+:root {
+  --background: #D4E8F7;
+  --foreground: #1A1A2E;
+}
+
+body {
+  background: linear-gradient(160deg, #C8E4F5 0%, #A8CCEB 100%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* ─── Wii Card (Claymorphism + Glassmorphism hybrid) ───────────────────────── */
+
+.wii-card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 1.5rem;
+  box-shadow:
+    inset 0 2px 8px rgba(255, 255, 255, 0.7),
+    inset 0 -1px 4px rgba(0, 0, 0, 0.04),
+    0 6px 28px rgba(0, 0, 0, 0.09),
+    0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* ─── Wii Channel Tile (Wii Menu style — interactive card) ─────────────────── */
+
+.wii-channel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 3px solid rgba(255, 255, 255, 0.98);
+  border-radius: 1.75rem;
+  box-shadow:
+    inset 0 3px 10px rgba(255, 255, 255, 0.75),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.05),
+    0 8px 32px rgba(0, 0, 0, 0.10),
+    0 3px 8px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition:
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.22s ease;
+}
+
+.wii-channel:hover {
+  transform: translateY(-5px) scale(1.025);
+  box-shadow:
+    inset 0 3px 10px rgba(255, 255, 255, 0.75),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.05),
+    0 16px 48px rgba(0, 0, 0, 0.14),
+    0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.wii-channel:active {
+  transform: translateY(0px) scale(0.97);
+  transition-duration: 0.1s;
+}
+
+/* ─── Primary Button (glossy + bouncy) ─────────────────────────────────────── */
+
+.wii-btn-primary {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.18s ease,
+    filter 0.15s ease;
+}
+
+.wii-btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  height: 52%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.30) 0%, transparent 100%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.wii-btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.06);
+}
+
+.wii-btn-primary:active {
+  transform: scale(0.95) translateY(1px);
+  transition-duration: 0.08s;
+  filter: brightness(0.96);
+}
+
+/* ─── Animations ────────────────────────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes wiiPop {
+  0%   { transform: scale(0.85); opacity: 0; }
+  65%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);    opacity: 0.6; }
+  100% { transform: scale(1.6);  opacity: 0; }
+}
+
+.animate-fade-in-up    { animation: fadeInUp    0.38s cubic-bezier(0.34, 1.2, 0.64, 1) both; }
+.animate-fade-in-scale { animation: fadeInScale 0.32s cubic-bezier(0.34, 1.2, 0.64, 1) both; }
+.animate-wii-pop       { animation: wiiPop      0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.animate-float         { animation: float 3s ease-in-out infinite; }
+
+/* Stagger delays for list children */
+.stagger-children > *:nth-child(1)  { animation-delay:   0ms; }
+.stagger-children > *:nth-child(2)  { animation-delay:  55ms; }
+.stagger-children > *:nth-child(3)  { animation-delay: 110ms; }
+.stagger-children > *:nth-child(4)  { animation-delay: 165ms; }
+.stagger-children > *:nth-child(5)  { animation-delay: 220ms; }
+.stagger-children > *:nth-child(6)  { animation-delay: 275ms; }
+.stagger-children > *:nth-child(7)  { animation-delay: 330ms; }
+.stagger-children > *:nth-child(8)  { animation-delay: 385ms; }
+.stagger-children > *:nth-child(9)  { animation-delay: 440ms; }
+.stagger-children > *:nth-child(10) { animation-delay: 495ms; }
+
+/* ─── Shimmer (skeleton loading) ───────────────────────────────────────────── */
+
+.shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.85) 50%,
+    rgba(255,255,255,0.45) 100%);
+  background-size: 200% auto;
+  animation: shimmer 1.5s linear infinite;
+}
+
+/* ─── Score badge gradient (top 3) ─────────────────────────────────────────── */
+
+.rank-gold   { background: linear-gradient(135deg, #FFF3B0 0%, #FFD700 100%); }
+.rank-silver { background: linear-gradient(135deg, #F0F0F0 0%, #C8C8C8 100%); }
+.rank-bronze { background: linear-gradient(135deg, #FFE4CC 0%, #CD7F32 100%); }
+
+/* ─── Focus states (accessibility) ─────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 3px solid #4CAF88;
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+/* ─── Layout ────────────────────────────────────────────────────────────────── */
+
+.page-content {
+  padding-bottom: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  .page-content {
+    padding-bottom: 0;
+  }
+}
+
+/* ─── Utilities ─────────────────────────────────────────────────────────────── */
+
+/* Hide scrollbar while keeping scroll */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Smooth tap highlight */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Cursor on all interactive elements */
+button, [role="button"], a { cursor: pointer; }
+
+/* ─── Reduced motion ────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

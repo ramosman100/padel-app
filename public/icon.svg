@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="256" fill="#4CAF88"/>
+  <!-- Shine highlight -->
+  <ellipse cx="200" cy="160" rx="120" ry="70" fill="rgba(255,255,255,0.18)" transform="rotate(-20,200,160)"/>
+  <!-- Tennis ball body -->
+  <circle cx="256" cy="256" r="140" fill="white"/>
+  <!-- Green seam curves (padel ball) -->
+  <path d="M 140 220 Q 190 256 140 292" stroke="#4CAF88" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <path d="M 372 220 Q 322 256 372 292" stroke="#4CAF88" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <!-- Racket handle stub -->
+  <rect x="238" y="370" width="36" height="90" rx="18" fill="#D4A017"/>
+  <rect x="246" y="370" width="20" height="90" rx="10" fill="#F0C040"/>
+</svg>
