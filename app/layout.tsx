@@ -31,6 +31,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const supabase = await createSupabaseServerClient()
   const { data: { user } } = await supabase.auth.getUser()
 
+  let isAdmin = false
+  if (user) {
+    const { data } = await supabase
+      .from('players')
+      .select('is_admin')
+      .eq('user_id', user.id)
+      .single()
+    isAdmin = data?.is_admin === true
+  }
+
   return (
     <html lang="en" className="h-full antialiased">
       <head>
@@ -43,11 +53,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body className="min-h-full flex flex-col">
         <div className="hidden md:block">
-          <NavBar user={user} />
+          <NavBar user={user} isAdmin={isAdmin} />
         </div>
         <main className="flex-1 page-content">{children}</main>
         <div className="md:hidden">
-          <BottomNav user={user} />
+          <BottomNav user={user} isAdmin={isAdmin} />
         </div>
       </body>
     </html>

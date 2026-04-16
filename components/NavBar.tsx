@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { createSupabaseBrowserClient } from '@/lib/supabase'
 import type { User } from '@supabase/supabase-js'
 
-export default function NavBar({ user }: { user: User | null }) {
+export default function NavBar({ user, isAdmin }: { user: User | null; isAdmin?: boolean }) {
   const router = useRouter()
   const supabase = createSupabaseBrowserClient()
 
@@ -32,6 +32,11 @@ export default function NavBar({ user }: { user: User | null }) {
           <>
             <Link href="/dashboard/log"     className="text-wii-muted hover:text-wii-text transition-colors">Log Match</Link>
             <Link href="/dashboard/profile" className="text-wii-muted hover:text-wii-text transition-colors">Profile</Link>
+            {isAdmin && (
+              <Link href="/dashboard/admin" className="text-wii-red/70 hover:text-wii-red font-bold transition-colors flex items-center gap-1">
+                🛡️ Admin
+              </Link>
+            )}
             <button
               onClick={signOut}
               className="bg-white/70 border border-white/80 hover:bg-white/90 text-wii-muted font-bold px-4 py-1.5 rounded-full transition-all"
