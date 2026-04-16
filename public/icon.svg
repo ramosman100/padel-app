@@ -1,14 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <!-- Background circle -->
-  <circle cx="256" cy="256" r="256" fill="#4CAF88"/>
-  <!-- Shine highlight -->
-  <ellipse cx="200" cy="160" rx="120" ry="70" fill="rgba(255,255,255,0.18)" transform="rotate(-20,200,160)"/>
-  <!-- Tennis ball body -->
-  <circle cx="256" cy="256" r="140" fill="white"/>
-  <!-- Green seam curves (padel ball) -->
-  <path d="M 140 220 Q 190 256 140 292" stroke="#4CAF88" stroke-width="18" fill="none" stroke-linecap="round"/>
-  <path d="M 372 220 Q 322 256 372 292" stroke="#4CAF88" stroke-width="18" fill="none" stroke-linecap="round"/>
-  <!-- Racket handle stub -->
-  <rect x="238" y="370" width="36" height="90" rx="18" fill="#D4A017"/>
-  <rect x="246" y="370" width="20" height="90" rx="10" fill="#F0C040"/>
+  <!-- App background -->
+  <rect width="512" height="512" rx="110" fill="#4CAF88"/>
+  <!-- Racket head -->
+  <ellipse cx="248" cy="208" rx="128" ry="152" fill="white"/>
+  <!-- String grid -->
+  <line x1="158" y1="168" x2="338" y2="168" stroke="#4CAF88" stroke-width="8" opacity="0.35"/>
+  <line x1="148" y1="208" x2="348" y2="208" stroke="#4CAF88" stroke-width="8" opacity="0.35"/>
+  <line x1="158" y1="248" x2="338" y2="248" stroke="#4CAF88" stroke-width="8" opacity="0.35"/>
+  <line x1="216" y1="60"  x2="216" y2="356" stroke="#4CAF88" stroke-width="8" opacity="0.35"/>
+  <line x1="248" y1="56"  x2="248" y2="360" stroke="#4CAF88" stroke-width="8" opacity="0.35"/>
+  <line x1="280" y1="60"  x2="280" y2="356" stroke="#4CAF88" stroke-width="8" opacity="0.35"/>
+  <!-- Handle shaft -->
+  <rect x="222" y="356" width="52" height="108" rx="18" fill="white"/>
+  <!-- Handle grip lines -->
+  <line x1="226" y1="386" x2="270" y2="386" stroke="#4CAF88" stroke-width="5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="226" y1="406" x2="270" y2="406" stroke="#4CAF88" stroke-width="5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="226" y1="426" x2="270" y2="426" stroke="#4CAF88" stroke-width="5" opacity="0.4" stroke-linecap="round"/>
+  <!-- Tennis ball -->
+  <circle cx="382" cy="372" r="56" fill="#D4E800"/>
+  <path d="M338 338 Q382 316 426 338" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M338 406 Q382 428 426 406" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
 </svg>

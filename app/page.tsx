@@ -119,10 +119,13 @@ export default async function LeaderboardPage() {
 
                         {/* Name */}
                         <p
-                          className={`${nameSize} font-bold text-wii-text text-center leading-tight max-w-[90px] truncate`}
-                          style={{ fontFamily: 'var(--font-fredoka)' }}
+                          className={`${nameSize} font-bold text-wii-text text-center leading-tight max-w-[100px]`}
+                          style={{ fontFamily: 'var(--font-fredoka)', wordBreak: 'break-word' }}
+                          title={entry.display_name}
                         >
-                          {entry.display_name}
+                          {entry.display_name.length > 12
+                            ? entry.display_name.slice(0, 11) + '…'
+                            : entry.display_name}
                         </p>
 
                         {/* Points badge */}
